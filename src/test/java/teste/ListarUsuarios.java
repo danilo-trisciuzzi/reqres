@@ -1,24 +1,30 @@
+package teste;
+
+import dominio.BaseTeste;
+import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class ListarUsuarios {
+public class ListarUsuarios extends BaseTeste {
+
     @Test
     public void buscarTodosUsuariosComSucesso() {
         given()
+                .params("page","1")
+                .params("per_page","6")
         .when()
-                .get("https://reqres.in/api/users")
+                .get("/users")
         .then()
-                .log().all()
-                //.assertThat()
-                //.statusCode(200)
+                .assertThat()
                 .statusCode(HttpStatus.SC_OK)
+                .body("page",is(1))
                 .body("data[0].id",is(1))
                 .body("data",is(notNullValue()))
-                //.body("support.url",is("https://reqres.in/#support-heading"))
         ;
     }
 }

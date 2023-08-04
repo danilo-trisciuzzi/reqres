@@ -3,6 +3,9 @@ package dominio;
 public class AtributosUsuario {
     private String name;
     private String job;
+    private String username;
+    private String email;
+    private String password;
 
     public AtributosUsuario() {}
 
@@ -11,12 +14,14 @@ public class AtributosUsuario {
         this.job = job;
     }
 
-    public String getName() {
-        return name;
+    public AtributosUsuario(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
     public String getJob() {
@@ -26,4 +31,17 @@ public class AtributosUsuario {
     public void setJob(String job) {
         this.job = job;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

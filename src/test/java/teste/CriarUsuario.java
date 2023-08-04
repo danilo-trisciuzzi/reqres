@@ -1,4 +1,7 @@
+package teste;
+
 import dominio.AtributosUsuario;
+import dominio.BaseTeste;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
@@ -9,24 +12,13 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.RestAssured.basePath;
 import static org.hamcrest.Matchers.is;
 
-public class CriarUsuario {
-
-    @BeforeClass
-    public static void setup(){
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        baseURI = "https://reqres.in";
-        basePath = "/api";
-    }
+public class CriarUsuario extends BaseTeste {
 
     @Test
     public void criarUsuarioComSucesso() {
-        AtributosUsuario atributosUsuario = new AtributosUsuario("Alberto","Gerente");
+        AtributosUsuario usuario = new AtributosUsuario("Alberto","Gerente");
         given()
-                .body(atributosUsuario)
-//                .body("{\n" +
-//                        "    \"name\": \"alberto\",\n" +
-//                        "    \"job\": \"chefe\"\n" +
-//                        "}")
+                .body(usuario)
                 .contentType(ContentType.JSON)
         .when()
                 .post("/users")

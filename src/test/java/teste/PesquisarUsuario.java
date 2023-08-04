@@ -1,18 +1,24 @@
+package teste;
+
+import dominio.BaseTeste;
+import io.restassured.RestAssured;
+import org.apache.http.HttpStatus;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
 
-public class PesquisarUsuario {
+public class PesquisarUsuario extends BaseTeste {
+
     @Test
     public void buscarUmUsuarioComSucesso() {
         given()
         .when()
-                .get("https://reqres.in/api/users/1")
+                .get("/users/1")
         .then()
-                .log().all()
                 .assertThat()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
                 .body("data.id",is(1))
                 .body("data.first_name",is("George"))
                 .body("support.url",is("https://reqres.in/#support-heading"))
