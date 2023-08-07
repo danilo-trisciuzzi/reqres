@@ -1,7 +1,17 @@
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class AtributosUsuario {
+    //@JsonAlias("first_name")
     private String name;
+    @JsonAlias("last_name")
+    private String lastName;
     private String job;
     private String username;
     private String email;
@@ -20,6 +30,7 @@ public class AtributosUsuario {
         this.password = password;
     }
 
+    @JsonGetter("first_name")// Esse é um exemplo para adapar o getter com o nome do campo que vem no retorno
     public String getName() {
         return name;
     }
@@ -28,6 +39,7 @@ public class AtributosUsuario {
         return job;
     }
 
+    //@JsonSetter("emprego") Esse é um exemplo para adapar o setter com o nome do campo que vem no retorno
     public void setJob(String job) {
         this.job = job;
     }
@@ -44,4 +56,11 @@ public class AtributosUsuario {
         return password;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
