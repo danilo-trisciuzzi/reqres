@@ -1,16 +1,16 @@
 package teste;
 
 import dominio.BaseTeste;
-import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class ListarUsuarios extends BaseTeste {
+
+    private static final String LISTAR_USUARIOS_ENDPOINT = "/users";
 
     @Test
     public void buscarTodosUsuariosComSucesso() {
@@ -18,7 +18,7 @@ public class ListarUsuarios extends BaseTeste {
                 .params("page","1")
                 .params("per_page","6")
         .when()
-                .get("/users")
+                .get(LISTAR_USUARIOS_ENDPOINT)
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)

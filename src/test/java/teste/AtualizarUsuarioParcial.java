@@ -2,31 +2,30 @@ package teste;
 
 import dominio.AtributosUsuario;
 import dominio.BaseTeste;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 public class AtualizarUsuarioParcial extends BaseTeste {
+
+    private static final String ATUALIZA_USUARIO_ENDPOINT = "/users/2";
 
     @Test
     public void atualizarUsuarioParcialComSucesso() {
         AtributosUsuario usuario = new AtributosUsuario();
-        usuario.setJob("zion resident");
+        usuario.setJob("Analista Senior");
         given()
                 .body(usuario)
-                .contentType(ContentType.JSON)
         .when()
-                .put("/users/2")
+                .put(ATUALIZA_USUARIO_ENDPOINT)
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("name",is(nullValue()))
-                .body("job",is("zion resident"))
+                .body("job",is("Analista Senior"))
         ;
     }
 }

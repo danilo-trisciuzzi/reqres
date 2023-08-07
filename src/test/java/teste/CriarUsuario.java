@@ -2,26 +2,24 @@ package teste;
 
 import dominio.AtributosUsuario;
 import dominio.BaseTeste;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
-import static io.restassured.RestAssured.basePath;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class CriarUsuario extends BaseTeste {
+
+    private static final String CRIAR_USUARIO_ENDPOINT = "/user";
 
     @Test
     public void criarUsuarioComSucesso() {
         AtributosUsuario usuario = new AtributosUsuario("Alberto","Gerente");
         given()
                 .body(usuario)
-                .contentType(ContentType.JSON)
         .when()
-                .post("/users")
+                .post(CRIAR_USUARIO_ENDPOINT)
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_CREATED)
