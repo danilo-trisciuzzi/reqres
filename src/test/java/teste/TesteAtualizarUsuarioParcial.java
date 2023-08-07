@@ -1,21 +1,22 @@
 package teste;
 
 import dominio.AtributosUsuario;
-import dominio.BaseTeste;
+import dominio.TesteBase;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 
-public class AtualizarUsuario extends BaseTeste {
+public class TesteAtualizarUsuarioParcial extends TesteBase {
 
     private static final String ATUALIZA_USUARIO_ENDPOINT = "/users/2";
 
     @Test
-    public void atualizarUsuarioComSucesso() {
-        AtributosUsuario usuario = new AtributosUsuario("Maria","Gerente de Projeto");
+    public void atualizarUsuarioParcialComSucesso() {
+        AtributosUsuario usuario = new AtributosUsuario();
+        usuario.setJob("Analista Senior");
         given()
                 .body(usuario)
         .when()
@@ -23,9 +24,8 @@ public class AtualizarUsuario extends BaseTeste {
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("name",is("Maria"))
-                .body("job",is("Gerente de Projeto"))
-                .body("updatedAt",is(notNullValue()))
+                .body("name",is(nullValue()))
+                .body("job",is("Analista Senior"))
         ;
     }
 }

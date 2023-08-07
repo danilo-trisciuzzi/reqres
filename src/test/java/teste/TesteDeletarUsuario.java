@@ -1,12 +1,12 @@
 package teste;
 
-import dominio.BaseTeste;
+import dominio.TesteBase;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class DeletarUsuario extends BaseTeste {
+public class TesteDeletarUsuario extends TesteBase {
 
     private static final String DELETAR_USUARIO_ENDPOINT = "/users/3";
 

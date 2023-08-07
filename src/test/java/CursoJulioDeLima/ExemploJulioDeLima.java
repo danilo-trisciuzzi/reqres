@@ -1,3 +1,5 @@
+package CursoJulioDeLima;
+
 import io.restassured.http.ContentType;
 import org.junit.Test;
 import static io.restassured.RestAssured.*;

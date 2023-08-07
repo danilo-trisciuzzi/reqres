@@ -1,7 +1,7 @@
 package teste;
 
 import dominio.AtributosUsuario;
-import dominio.BaseTeste;
+import dominio.TesteBase;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class RegistrarUsuario extends BaseTeste {
+public class TesteRegistrarUsuario extends TesteBase {
 
     private static final String REGISTRAR_USUARIO_ENDPOINT = "/register";
 

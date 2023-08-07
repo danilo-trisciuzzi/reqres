@@ -1,6 +1,6 @@
 package teste;
 
-import dominio.BaseTeste;
+import dominio.TesteBase;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class ListarUsuarios extends BaseTeste {
+public class TesteListarUsuarios extends TesteBase {
 
     private static final String LISTAR_USUARIOS_ENDPOINT = "/users";
 
@@ -25,6 +25,8 @@ public class ListarUsuarios extends BaseTeste {
                 .body("page",is(1))
                 .body("data[0].id",is(1))
                 .body("data",is(notNullValue()))
+                .body("data.size()",is(6))
+                .body("data.findAll {it.avatar.startsWith('https://reqres.in')}.size()", is(6))
         ;
     }
 }

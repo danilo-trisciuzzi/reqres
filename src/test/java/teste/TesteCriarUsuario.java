@@ -1,15 +1,14 @@
 package teste;
 
 import dominio.AtributosUsuario;
-import dominio.BaseTeste;
-import io.restassured.http.ContentType;
+import dominio.TesteBase;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class CriarUsuario extends BaseTeste {
+public class TesteCriarUsuario extends TesteBase {
 
     private static final String CRIAR_USUARIO_ENDPOINT = "/user";
 
