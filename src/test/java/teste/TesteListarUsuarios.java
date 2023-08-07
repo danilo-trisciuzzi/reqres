@@ -15,8 +15,7 @@ public class TesteListarUsuarios extends TesteBase {
     @Test
     public void buscarTodosUsuariosComSucesso() {
         given()
-                .params("page","1")
-                .params("per_page","6")
+                .params("page","1","per_page",8)
         .when()
                 .get(LISTAR_USUARIOS_ENDPOINT)
         .then()
@@ -25,8 +24,8 @@ public class TesteListarUsuarios extends TesteBase {
                 .body("page",is(1))
                 .body("data[0].id",is(1))
                 .body("data",is(notNullValue()))
-                .body("data.size()",is(6))
-                .body("data.findAll {it.avatar.startsWith('https://reqres.in')}.size()", is(6))
+                .body("data.size()",is(8))
+                .body("data.findAll {it.avatar.startsWith('https://reqres.in')}.size()", is(8))
         ;
     }
 }

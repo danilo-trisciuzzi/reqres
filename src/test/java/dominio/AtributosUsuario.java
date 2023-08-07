@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class AtributosUsuario {
-    //@JsonAlias("first_name")
+    @JsonAlias("first_name")
     private String name;
     @JsonAlias("last_name")
     private String lastName;
@@ -30,7 +30,7 @@ public class AtributosUsuario {
         this.password = password;
     }
 
-    @JsonGetter("first_name")// Esse é um exemplo para adapar o getter com o nome do campo que vem no retorno
+    //@JsonGetter("first_name")// Esse é um exemplo para adapar o getter com o nome do campo que vem no retorno
     public String getName() {
         return name;
     }

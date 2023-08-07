@@ -21,9 +21,8 @@ public class TesteBase {
                 .setContentType(ContentType.JSON)
                 .build();
 
-        //Para a response, o ideal seria se todos os retornos fossem iguais, ou colocando no BeforeClass dos testes onde os retornos sejam iguais
-/*        RestAssured.responseSpecification = new ResponseSpecBuilder();
-                .expectStatusCode(HttpStatus.SC_OK)
+/*        RestAssured.responseSpecification = new ResponseSpecBuilder()
+                .expectContentType(ContentType.JSON)
                 .build();*/
     }
 }
